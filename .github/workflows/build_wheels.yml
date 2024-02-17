@@ -1,4 +1,4 @@
-name: Build Wheels
+name: Build Wheel
 
 on:
   push:
@@ -10,13 +10,12 @@ env:
 
 jobs:
   build_wheels:
-    name: Build wheels for ${{ matrix.py }} on ${{ matrix.os }}
+    name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04, windows-2022, macos-13]
-        py: ["cp38-*", "cp39-*", "cp310-*", "cp311-*", "cp312-*"]
 
     steps:
       - uses: actions/setup-python@v5
@@ -48,11 +47,9 @@ jobs:
         run: python -m pip install cibuildwheel==2.16.5
 
       - name: Build Wheels
-        env:
-          CIBW_BUILD: ${{ matrix.py }}
         run: python -m cibuildwheel --output-dir wheelhouse
 
       - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
-          name: ${{ matrix.os }}-${{ matrix.py }}
+          name: ${{ matrix.os }}
