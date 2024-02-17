@@ -19,9 +19,11 @@ jobs:
         py: ["cp38-*", "cp39-*", "cp310-*", "cp311-*", "cp312-*"]
 
     steps:
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Visual Studio shell on Windows
         uses: egor-tensin/vs-shell@v2
@@ -50,6 +52,6 @@ jobs:
           CIBW_BUILD: ${{ matrix.py }}
         run: python -m cibuildwheel --output-dir wheelhouse
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
