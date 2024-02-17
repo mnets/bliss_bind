@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+
+build/
+*.egg-info/
+*.egg
+.cache
+.hypothesis
+
+*.whl
+compile_commands.json
