@@ -31,7 +31,7 @@ jobs:
           arch: x64
 
       - name: set x64 cl.exe as CXX
-        if: matrix.os == 'reticula-build-windows-2022'
+        if: matrix.os == 'windows-2022'
         run: |
           "CXX=$((Get-Command cl).Path)" >> "$env:GITHUB_ENV"
           "CC=$((Get-Command cl).Path)" >> "$env:GITHUB_ENV"
@@ -55,3 +55,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
+          name: ${{ matrix.os }}-${{ matrix.py }}
