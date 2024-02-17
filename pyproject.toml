@@ -46,6 +46,7 @@ wheel.py-api = "cp312"
 [tool.cibuildwheel]
 test-command = "pytest {project}/tests"
 test-requires = ["pytest", "hypothesis"]
+skip = "pp*"
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64"]
