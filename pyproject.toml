@@ -7,16 +7,28 @@ requires-python = ">=3.8"
 authors = [
     { name = "Arash Badie-Modiri", email = "arashbm@gmail.com" },
 ]
+keywords = ["graph", "automorphism", "canonical labeling", "bliss"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
 ]
 
 [project.urls]
-Homepage = ""
-
+homepage = ""
+repository = "https://github.com/arashbm/bliss_bind"
+bug-tracker = "https://github.com/arashbm/bliss_bind/issues"
 
 [build-system]
-requires = ["scikit-build-core >=0.8.0", "nanobind >=1.7.0"]
+requires = ["scikit-build-core >=0.8.0", "nanobind >=1.8.0"]
 build-backend = "scikit_build_core.build"
 
 
