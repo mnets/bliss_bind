@@ -1,0 +1,55 @@
+name: Build Wheels
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  MACOSX_DEPLOYMENT_TARGET: "10.15"
+
+jobs:
+  build_wheels:
+    name: Build wheels for ${{ matrix.py }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-2022, macos-13]
+        py: ["cp38-*", "cp39-*", "cp310-*", "cp311-*", "cp312-*"]
+
+    steps:
+      - uses: actions/setup-python@v4
+
+      - uses: actions/checkout@v3
+
+      - name: Set up Visual Studio shell on Windows
+        uses: egor-tensin/vs-shell@v2
+        with:
+          arch: x64
+
+      - name: set x64 cl.exe as CXX
+        if: matrix.os == 'reticula-build-windows-2022'
+        run: |
+          "CXX=$((Get-Command cl).Path)" >> "$env:GITHUB_ENV"
+          "CC=$((Get-Command cl).Path)" >> "$env:GITHUB_ENV"
+
+      - name: select Xcode version
+        if: ${{ startsWith(matrix.os, 'macos') }}
+        run: |
+          sudo xcode-select -s "/Applications/Xcode_14.3.app"
+
+      - name: Update pip
+        run: python -m pip install -U pip
+
+      - name: Install cibuildwheel
+        run: python -m pip install cibuildwheel==2.16.5
+
+      - name: Build Wheels
+        env:
+          CIBW_BUILD: ${{ matrix.py }}
+        run: python -m cibuildwheel --output-dir wheelhouse
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./wheelhouse/*.whl
