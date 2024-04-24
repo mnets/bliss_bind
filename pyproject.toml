@@ -1,5 +1,5 @@
 [project]
-name = "bliss_bind"
+name = "bliss-bind"
 version = "0.0.1"
 description = "Minimal Python binding for Bliss: open-source tool for computing canonical labelings and automorphism groups of graphs."
 readme = "README.md"
@@ -49,7 +49,7 @@ test-requires = ["pytest", "hypothesis"]
 skip = "pp*"
 
 [tool.cibuildwheel.linux]
-archs = ["x86_64"]
+archs = ["x86_64", "aarch64"]
 repair-wheel-command = "auditwheel repair -w {dest_dir} {wheel}"
 
 [tool.cibuildwheel.macos]
