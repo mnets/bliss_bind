@@ -1,6 +1,6 @@
 [project]
 name = "bliss-bind"
-version = "0.0.1"
+version = "0.1.0"
 description = "Minimal Python binding for Bliss: open-source tool for computing canonical labelings and automorphism groups of graphs."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -24,8 +24,8 @@ classifiers = [
 
 [project.urls]
 homepage = ""
-repository = "https://github.com/arashbm/bliss_bind"
-bug-tracker = "https://github.com/arashbm/bliss_bind/issues"
+repository = "https://github.com/mnets/bliss_bind"
+bug-tracker = "https://github.com/mnets/bliss_bind/issues"
 
 [build-system]
 requires = ["scikit-build-core >=0.8.0", "nanobind >=1.8.0"]
