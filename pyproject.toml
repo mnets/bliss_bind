@@ -23,7 +23,7 @@ classifiers = [
 ]
 
 [project.urls]
-homepage = ""
+homepage = "https://github.com/mnets/bliss_bind"
 repository = "https://github.com/mnets/bliss_bind"
 bug-tracker = "https://github.com/mnets/bliss_bind/issues"
 
