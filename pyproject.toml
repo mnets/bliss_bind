@@ -1,6 +1,6 @@
 [project]
 name = "bliss-bind"
-version = "0.1.0"
+version = "0.2.0"
 description = "Minimal Python binding for Bliss: open-source tool for computing canonical labelings and automorphism groups of graphs."
 readme = "README.md"
 requires-python = ">=3.8"
