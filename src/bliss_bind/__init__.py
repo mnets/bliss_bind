@@ -36,7 +36,10 @@ class NamedGraph():
             self.neighbours == other.neighbours
 
     def __hash__(self):
-        return hash((self.node_color, self.neighbours))
+        return hash(
+            (frozenset(self.node_color.items()),
+             frozenset((i, frozenset(j))
+             for i, j in sorted(self.neighbours.items()))))
 
     def canonical_labelling(self):
         labelling, _ = self.g.canonical_form()
