@@ -28,7 +28,7 @@ repository = "https://github.com/mnets/bliss_bind"
 bug-tracker = "https://github.com/mnets/bliss_bind/issues"
 
 [build-system]
-requires = ["scikit-build-core >=0.8.0", "nanobind ==1.9.2"]
+requires = ["scikit-build-core >=0.8.0", "nanobind >=1.8.0"]
 build-backend = "scikit_build_core.build"
 
 
